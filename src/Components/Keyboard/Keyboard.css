@@ -1,0 +1,9 @@
+.Keyboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.Line {
+  display: flex;
+  margin: auto;
+}
