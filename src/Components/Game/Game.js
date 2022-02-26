@@ -15,6 +15,7 @@ const Game = () => {
   const [wordNumber, setWordNumber] = useState(0);
   //letter number
   const [letterNumber, setLetterNumber] = useState(0);
+  const [wordStatuses, setWordStatuses] = useState(Array(6).fill(0))
   let wordSize = 5;
   //as they type out letters for a current guess, build the guess string
   const [guesses, setGuesses] = useState(Array(6).fill(Array(5).fill('')));
@@ -95,6 +96,9 @@ const Game = () => {
 
   const enter = () => {
     if (letterNumber === wordSize) {
+      const tempStatuses = JSON.parse(JSON.stringify(wordStatuses));
+      tempStatuses[wordNumber] = 1;
+      setWordStatuses(tempStatuses);
       if (wordGuessed()) {
         alert('You won!')
       }
@@ -108,7 +112,7 @@ const Game = () => {
   return (
     <div className='Game'>
       <p>{keyword}</p>
-      <Board guesses={guesses} wordSize={wordSize}/>
+      <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} letterStatus={letterStatus}/>
       <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter}/>
     </div>
   )

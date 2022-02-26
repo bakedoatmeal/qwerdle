@@ -2,18 +2,19 @@ import React from 'react';
 import './Word.css';
 import Tile from '../Tile/Tile'
 
-const Word = ({size, guess}) => {
-  
-  const word2 = []
-  for (let i = 0; i < size; i = i + 1) {
-    word2.push(<Tile color="" letter={guess[i]} key={i}/>)
-  }
+const Word = ({size, guess, wordStatus = 0, letterStatus }) => {
 
   const word = guess.map((letter, index) => {
-    return (
-      <Tile color="" letter={letter} key={index}/>
-    )
-  });
+    if (wordStatus === 0) {
+      return (
+        <Tile letter={letter} key={index} />
+      )
+    } else if (wordStatus === 1) {
+      return (
+        <Tile status={letterStatus[letter] === 0 ? 'grey' : letterStatus[letter] === 1 ? 'yellow' : 'green'} letter={letter} key={index}/>
+      )
+    }
+  })
 
   return (
     <div className='Word'>
