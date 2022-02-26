@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: brown;
   margin: 5px;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   border-radius: 4px;
-  background-color: rgb(22, 145, 22);
+  background-color: beige;
 }

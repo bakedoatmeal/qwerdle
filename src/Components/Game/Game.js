@@ -2,29 +2,115 @@ import React from 'react';
 import './Game.css';
 import Board from '../Board/Board';
 import Keyboard from '../Keyboard/Keyboard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { WORDS} from '../../constants/wordlist';
+import { acceptedWords } from '../../constants/acceptedwords';
+
 
 const Game = () => {
 
-  let keyword = 'dodge';
-  const [guesses, setGuesses] = useState('');
-  const [guessed, setGuessed] = useState([]);
-  const [currGuess, setCurrGuess] = useState('');
+  // setting a random word to guess for testing
+  const [keyword, setKeyword] = useState('dodge');
+  // track which guess they are at (out of 5)
+  const [wordNumber, setWordNumber] = useState(0);
+  //letter number
+  const [letterNumber, setLetterNumber] = useState(0);
+  let wordSize = 5;
+  //as they type out letters for a current guess, build the guess string
+  const [guesses, setGuesses] = useState(Array(6).fill(Array(5).fill('')));
+  //if we hit enter, put old guesses in here
+  const [letterStatus, setLetterStatus] = useState({
+    'a': 0,
+    'b': 0,
+    'c': 0, 
+    'd': 0, 
+    'e': 0,
+    'f': 0,
+    'g': 0,
+    'h': 0,
+    'i': 0,
+    'j': 0,
+    'k': 0,
+    'l': 0,
+    'm': 0,
+    'n': 0,
+    'o': 0,
+    'p': 0,
+    'q': 0,
+    'r': 0,
+    's': 0,
+    't': 0,
+    'u': 0,
+    'v': 0,
+    'w': 0,
+    'x': 0,
+    'y': 0,
+    'z': 0,
+  });
+
+  useEffect(() => {
+    setKeyword(WORDS[Math.floor(Math.random()*WORDS.length)]);
+  }, []);
 
   const buttonInteraction = (letter) => {
-    setGuesses(guesses + letter)
-    console.log(letter)
+    if (letterNumber < wordSize) {
+      const newArray = Array(6);
+      for (let i = 0; i < 6; i = i + 1) {
+        newArray[i] = [...guesses[i]]
+        if (i === wordNumber) {
+          newArray[i][letterNumber] = letter;
+        }
+      }
+
+      // [[], [], []]
+      setGuesses(newArray);
+      setLetterNumber(letterNumber + 1);
+    } else {
+      console.log('Too many letters!');
+    }
   }
 
   const del = () => {
-    setGuesses(guesses.slice(0, -1))
+    if (letterNumber > 0) {
+      const newArray = Array(6);
+      for (let i = 0; i < 6; i = i + 1) {
+        newArray[i] = [...guesses[i]]
+        if (i === wordNumber) {
+          newArray[i][letterNumber - 1] = '';
+        }
+      }
+      setGuesses(newArray);
+      setLetterNumber(letterNumber - 1);
+    } else {
+      console.log('end of word!')
+    }
+  }
+
+  const wordGuessed = () => {
+    if (guesses[wordNumber].join('') === keyword) {
+      return true
+    }
+    return false
+  }
+
+  const enter = () => {
+    if (letterNumber === wordSize) {
+      if (wordGuessed()) {
+        alert('You won!')
+      }
+      setWordNumber(wordNumber + 1);
+      setLetterNumber(0);
+    } else {
+      console.log('Incomplete guess!');
+    }
   }
 
   return (
-    <>
-      <Board guesses={guesses}/>
-      <Keyboard buttonInteraction={buttonInteraction} del={del}/>
-    </>
+    <div className='Game'>
+      <p>{keyword}</p>
+      <Board guesses={guesses} wordSize={wordSize}/>
+      <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter}/>
+    </div>
   )
 
 }

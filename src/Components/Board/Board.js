@@ -3,11 +3,17 @@ import Tile from '../Tile/Tile';
 import './Board.css';
 import Word from '../Word/Word'
 
-const Board = ({guesses}) => {
+const Board = ({guesses, wordSize}) => {
+
+  const allGuesses = guesses.map((word, index) => {
+    return (
+      <Word size={wordSize} guess={word} key={index}/>
+    )
+  })
 
   return (
     <div className="Board">
-      <Word size="5" guess={guesses}/>
+      {allGuesses}
     </div>
   )
 }
