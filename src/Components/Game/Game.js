@@ -5,7 +5,7 @@ import Keyboard from '../Keyboard/Keyboard';
 import { useState, useEffect } from 'react';
 import { WORDS} from '../../constants/wordlist';
 import { acceptedWords } from '../../constants/acceptedwords';
-import {isValidGuess} from '../helpers/helpers'
+import {isValidGuess, updateLetters} from '../helpers/helpers'
 
 const Game = () => {
 
@@ -63,7 +63,6 @@ const Game = () => {
         }
       }
 
-      // [[], [], []]
       setGuesses(newArray);
       setLetterNumber(letterNumber + 1);
     } else {
@@ -100,11 +99,13 @@ const Game = () => {
         const tempStatuses = JSON.parse(JSON.stringify(wordStatuses));
         tempStatuses[wordNumber] = 1;
         setWordStatuses(tempStatuses);
+        setLetterStatus(updateLetters(letterStatus, guesses[wordNumber], keyword));
         if (wordGuessed()) {
-          alert('You won!')
+          alert('You won!');
+        } else {
+          setWordNumber(wordNumber + 1);
+          setLetterNumber(0);
         }
-        setWordNumber(wordNumber + 1);
-        setLetterNumber(0);
       } else {
         console.log('Invalid word!', guesses[wordNumber].join(''));
         console.log(guesses[wordNumber].join(''));
