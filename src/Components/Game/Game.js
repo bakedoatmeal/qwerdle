@@ -120,7 +120,7 @@ const Game = () => {
     <div className='Game'>
       <p>{keyword}</p>
       <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} letterStatus={letterStatus}/>
-      <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter}/>
+      <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter} letterStatus={letterStatus}/>
     </div>
   )
 
