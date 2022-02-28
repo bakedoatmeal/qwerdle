@@ -11,7 +11,7 @@ const Word = ({size, guess, wordStatus = 0, letterStatus }) => {
       )
     } else if (wordStatus === 1) {
       return (
-        <Tile status={letterStatus[letter] === 0 ? 'grey' : letterStatus[letter] === 1 ? 'yellow' : 'green'} letter={letter} key={index}/>
+        <Tile status={letterStatus[letter] === 0 ? 'grey' : letterStatus[letter] === 1 ? 'yellow' : letterStatus[letter] === 2 ? 'green' : ''} letter={letter} key={index}/>
       )
     }
   })

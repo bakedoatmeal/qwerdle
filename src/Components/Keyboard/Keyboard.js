@@ -24,9 +24,9 @@ const Keyboard = ({buttonInteraction, del, enter, letterStatus}) => {
       <div className='Line'>{allKeys[0]}</div>
       <div className='Line'>{allKeys[1]}</div>
       <div className='Line'>
-        <button onClick={enter}>ENTER</button>
+        <button className='enter-button' onClick={enter}> ENTER </button>
         {allKeys[2]}
-        <button onClick={del}>DEL</button>
+        <button className='del-button' onClick={del}> DEL </button>
       </div>
     </div>
   )

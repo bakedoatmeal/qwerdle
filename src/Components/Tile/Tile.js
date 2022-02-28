@@ -6,7 +6,7 @@ const Tile = ({letter, status = 0}) => {
   className += ` ${status}`
   return (
     <div className={className}>
-      {letter}
+      {letter.toUpperCase()}
     </div>
   )
 }
