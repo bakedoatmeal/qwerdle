@@ -12,7 +12,7 @@ const Keyboard = ({buttonInteraction, del, enter, letterStatus}) => {
 
   for (let i = 0; i < keyboard.length; i = i + 1) {
     allKeys.push(keyboard[i].map((value) => {
-      const letterColor = letterStatus[value] === 0 ? 'grey' : letterStatus[value] === 1 ? 'yellow' : 'green';
+      const letterColor = letterStatus[value] === 0 ? 'grey' : letterStatus[value] === 1 ? 'yellow' : letterStatus[value] === 2 ? 'green' : 'light-grey';
       return (
         <Letter letter={value.toUpperCase()} key={value} buttonInteraction={buttonInteraction} status={letterColor}/>
       )

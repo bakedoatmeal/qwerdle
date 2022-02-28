@@ -11,13 +11,17 @@
 }
 
 .green-letter {
-  background-color: '#538d4e';
+  background-color: #538d4e;
 }
 
 .yellow-letter {
-  background-color: '#b59f3a';
+  background-color: #b59f3a;
 }
 
 .grey-letter {
-  background-color: '#3a3a3c';
+  background-color: #3a3a3c;
+}
+
+.light-grey-letter {
+  background-color: #818384;
 }
