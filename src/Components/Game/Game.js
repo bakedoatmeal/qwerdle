@@ -88,10 +88,12 @@ const Game = () => {
       } else {
         console.log('Invalid word!', guesses[wordNumber].join(''));
         console.log(guesses[wordNumber].join(''));
+        alert('Invalid word!');
         
       }
     } else {
       console.log('Incomplete guess!');
+      alert('Incomplete guess!');
     }
   }
 
