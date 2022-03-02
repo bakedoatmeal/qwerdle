@@ -97,7 +97,6 @@ const Game = () => {
 
   return (
     <div className='Game'>
-      <p>{keyword}</p>
       <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} letterStatus={letterStatus} keyword={keyword}/>
       <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter} letterStatus={letterStatus}/>
     </div>

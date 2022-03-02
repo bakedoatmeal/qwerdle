@@ -11,7 +11,7 @@ export function getKeyword() {
   while (!/(.).*\1/.test(keyword) === false) {
     keyword = WORDS[Math.floor(Math.random()*WORDS.length)];
   }
-  
+  console.log(keyword);
   return keyword;
 }
 
@@ -23,12 +23,12 @@ export function updateLetters(letterStatus, guessArray, keyword) {
       if (keyword.indexOf(guessArray[i]) === i) {
         updatedDict[guessArray[i]] = 2;
       } else {
-        if (updatedDict !== 2) {
+        if (updatedDict[guessArray[i]] !== 2) {
           updatedDict[guessArray[i]] = 1;
         }
       }
     } else {
-        if (updatedDict !== 2 && updatedDict !== 1) {
+        if (updatedDict[guessArray[i]] !== 2 && updatedDict[guessArray[i]] !== 1) {
           updatedDict[guessArray[i]] = 0;
         }
     }
