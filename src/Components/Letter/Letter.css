@@ -2,10 +2,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
   color: white;
-  margin: 5px;
-  height: 50px;
-  width: 50px;
+  margin: 3px;
+  height: 58px;
+  width: 46px;
   border-radius: 4px;
-  background-color: grey;
+  border: none;
+}
+
+.button {
+  box-shadow: none;
+  border: none;
+}
+
+.green-letter {
+  background-color: #538d4e;
+}
+
+.yellow-letter {
+  background-color: #b59f3a;
+}
+
+.grey-letter {
+  background-color: #3a3a3c;
+}
+
+.light-grey-letter {
+  background-color: #818384;
 }

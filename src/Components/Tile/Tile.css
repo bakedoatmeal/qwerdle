@@ -2,22 +2,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: brown;
-  margin: 5px;
-  height: 50px;
-  width: 50px;
-  border-radius: 4px;
-  background-color: beige;
+  color: white;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+  margin: 2px;
+  height: 58px;
+  width: 58px;
+  background-color: rgb(138, 138, 132);
+  border: 2px solid #7c7c80;
 }
 
 .green {
-  background-color: green;
+  background-color: #538d4e;
+  border: 2px solid #538d4e;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #b59f3a;
+  border: 2px solid #b59f3a;
 }
 
 .grey {
-  background-color: lightgray;
+  background-color: #3a3a3c;
+  border: 2px solid #3a3a3c;
 }
