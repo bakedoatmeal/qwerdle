@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/qwerdle/static/css/main.ecc3ebaa.css",
-    "main.js": "/qwerdle/static/js/main.d32768d1.js",
+    "main.js": "/qwerdle/static/js/main.2b94fd49.js",
     "static/js/787.e01666d6.chunk.js": "/qwerdle/static/js/787.e01666d6.chunk.js",
     "static/media/logo.svg": "/qwerdle/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/qwerdle/index.html",
     "main.ecc3ebaa.css.map": "/qwerdle/static/css/main.ecc3ebaa.css.map",
-    "main.d32768d1.js.map": "/qwerdle/static/js/main.d32768d1.js.map",
+    "main.2b94fd49.js.map": "/qwerdle/static/js/main.2b94fd49.js.map",
     "787.e01666d6.chunk.js.map": "/qwerdle/static/js/787.e01666d6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ecc3ebaa.css",
-    "static/js/main.d32768d1.js"
+    "static/js/main.2b94fd49.js"
   ]
 }
