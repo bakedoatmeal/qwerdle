@@ -19,3 +19,19 @@ export function updateLetters(letterStatus, guessArray, keyword) {
   }
   return updatedDict; 
 }
+
+export function wordDict(guess, keyword) {
+  const letterDict = {}
+  for (let i = 0; i < keyword.length; i = i + 1) {
+    if (keyword.includes(guess[i])) {
+      if (keyword.indexOf(guess[i]) === i) {
+        letterDict[guess[i]] = 2
+      } else {
+        letterDict[guess[i]] = 1
+      }
+    } else {
+      letterDict[guess[i]] = 0
+    }
+  }
+  return letterDict;
+}

@@ -77,6 +77,7 @@ const Game = () => {
         const tempStatuses = JSON.parse(JSON.stringify(wordStatuses));
         tempStatuses[wordNumber] = 1;
         setWordStatuses(tempStatuses);
+        console.log(wordStatuses)
         setLetterStatus(updateLetters(letterStatus, guesses[wordNumber], keyword));
         if (wordGuessed()) {
           alert('You won!');
@@ -97,7 +98,7 @@ const Game = () => {
   return (
     <div className='Game'>
       <p>{keyword}</p>
-      <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} letterStatus={letterStatus}/>
+      <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} letterStatus={letterStatus} keyword={keyword}/>
       <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter} letterStatus={letterStatus}/>
     </div>
   )
