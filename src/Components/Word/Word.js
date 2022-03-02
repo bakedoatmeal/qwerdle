@@ -1,7 +1,7 @@
 import React from 'react';
 import './Word.css';
 import Tile from '../Tile/Tile';
-import {wordDict} from '../helpers/helpers';
+import {wordArray} from '../helpers/helpers';
 
 const Word = ({size, guess, wordStatus = 0, letterStatus, keyword }) => {
 
@@ -12,9 +12,9 @@ const Word = ({size, guess, wordStatus = 0, letterStatus, keyword }) => {
       )
     } else if (wordStatus === 1) {
         // get dict of letters with status for each letter
-        const letterDict = wordDict(guess, keyword);
+        const letterArray = wordArray(guess, keyword);
         return (
-        <Tile status={letterDict[letter] === 0 ? 'grey' : letterDict[letter] === 1 ? 'yellow' : letterDict[letter] === 2 ? 'green' : ''} letter={letter} key={index} />
+        <Tile status={letterArray[index] === 0 ? 'grey' : letterArray[index] === 1 ? 'yellow' : letterArray[index] === 2 ? 'green' : ''} letter={letter} key={index} />
       )
     }
   })
