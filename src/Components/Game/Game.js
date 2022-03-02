@@ -5,7 +5,7 @@ import Keyboard from '../Keyboard/Keyboard';
 import { useState, useEffect } from 'react';
 import { WORDS} from '../../constants/wordlist';
 import { acceptedWords } from '../../constants/acceptedwords';
-import {isValidGuess, updateLetters} from '../helpers/helpers'
+import {getKeyword, isValidGuess, updateLetters} from '../helpers/helpers'
 
 const Game = () => {
 
@@ -28,7 +28,7 @@ const Game = () => {
   const [letterStatus, setLetterStatus] = useState(letterDict)
 
   useEffect(() => {
-    setKeyword(WORDS[Math.floor(Math.random()*WORDS.length)]);
+    setKeyword(getKeyword());
   }, []);
 
   const buttonInteraction = (letter) => {

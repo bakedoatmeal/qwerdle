@@ -5,6 +5,16 @@ export function isValidGuess(guess) {
   return (acceptedWords.includes(guess) || WORDS.includes(guess));
 }
 
+export function getKeyword() {
+  let keyword = WORDS[Math.floor(Math.random()*WORDS.length)];
+
+  while (!/(.).*\1/.test(keyword) === false) {
+    keyword = WORDS[Math.floor(Math.random()*WORDS.length)];
+  }
+  
+  return keyword;
+}
+
 export function updateLetters(letterStatus, guessArray, keyword) {
   //create a copy of the current letterstatus dictionary
   const updatedDict = {...letterStatus};
@@ -13,25 +23,29 @@ export function updateLetters(letterStatus, guessArray, keyword) {
       if (keyword.indexOf(guessArray[i]) === i) {
         updatedDict[guessArray[i]] = 2;
       } else {
-        updatedDict[guessArray[i]] = 1;
+        if (updatedDict !== 2) {
+          updatedDict[guessArray[i]] = 1;
+        }
       }
+    } else {
+        if (updatedDict !== 2 && updatedDict !== 1) {
+          updatedDict[guessArray[i]] = 0;
+        }
     }
   }
   return updatedDict; 
 }
 
-export function wordDict(guess, keyword) {
-  const letterDict = {}
+export function wordArray(guess, keyword) {
+  const letterArray = Array(keyword.length).fill(0)
   for (let i = 0; i < keyword.length; i = i + 1) {
     if (keyword.includes(guess[i])) {
-      if (keyword.indexOf(guess[i]) === i) {
-        letterDict[guess[i]] = 2
+      if (keyword[i] === guess[i]) {
+        letterArray[i] = 2
       } else {
-        letterDict[guess[i]] = 1
+        letterArray[i] = 1
       }
-    } else {
-      letterDict[guess[i]] = 0
     }
   }
-  return letterDict;
+  return letterArray;
 }
