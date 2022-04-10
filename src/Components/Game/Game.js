@@ -120,7 +120,7 @@ const Game = () => {
 
   return (
     <div className='Game'>
-      <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} letterStatus={letterStatus} keyword={keyword}/>
+      <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} keyword={keyword}/>
       <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter} letterStatus={letterStatus}/>
     </div>
   )

@@ -3,7 +3,7 @@ import './Word.css';
 import Tile from '../Tile/Tile';
 import {wordArray} from '../helpers/helpers';
 
-const Word = ({size, guess, wordStatus = 0, letterStatus, keyword }) => {
+const Word = ({size, guess, wordStatus = 0, keyword }) => {
 
   const word = guess.map((letter, index) => {
     if (wordStatus === 0) {
