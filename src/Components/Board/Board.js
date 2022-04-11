@@ -7,16 +7,9 @@ const Board = ({guesses, wordSize, wordStatuses, keyword}) => {
 
   const allGuesses = guesses.map((word, index) => {
 
-    //const copyLetterStatus = {...letterStatus};
-    // if (wordStatuses[index] === 0) {
       return (
         <Word size={wordSize} guess={word} key={index} wordStatus={wordStatuses[index]} keyword={keyword}/>
       )
-    // } else {
-    //   return (
-    //     <Word size={wordSize} guess={word} key={index} wordStatus={wordStatuses[index]} letterStatus={copyLetterStatus} keyword={keyword}/>
-    //   )
-    // }
   })
 
   return (

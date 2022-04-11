@@ -66,7 +66,6 @@ const Game = () => {
           newArray[i][letterNumber - 1] = '';
         }
       }
-      console.log(newArray)
       
       //set guesses to the new array
       setGuesses(newArray);
@@ -119,22 +118,21 @@ const Game = () => {
     }
   }
 
+  const keyDownHandler = (event) => { 
+    if (event.key === 'Enter') {
+      enter();
+    } else if (event.key === 'Backspace') {
+      del();
+    } else if (event.key.length === 1 && (/[a-zA-Z]/).test(event.key)) {
+      buttonInteraction(event.key);
+    }
+  }
+
   // Add event handler to document for keypresses
   useEffect(() => {
-    const keyDownHandler = (event) => { 
-      if (event.key === 'Enter') {
-        enter();
-      } else if (event.key === 'Backspace') {
-        del();
-      } else if ((/[a-zA-Z]/).test(event.key)) {
-        buttonInteraction(event.key);
-      }
-    }
-
     document.addEventListener('keydown', keyDownHandler);
-
     return () => document.removeEventListener('keydown', keyDownHandler)
-  }, [del, enter, buttonInteraction])
+  })
 
   return (
     <div className='Game'>
