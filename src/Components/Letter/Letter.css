@@ -9,6 +9,7 @@
   width: 46px;
   border-radius: 4px;
   border: none;
+  background-color: #818384;
 }
 
 .button {
@@ -16,18 +17,14 @@
   border: none;
 }
 
-.green-letter {
+.correct {
   background-color: #538d4e;
 }
 
-.yellow-letter {
+.present {
   background-color: #b59f3a;
 }
 
-.grey-letter {
+.absent {
   background-color: #3a3a3c;
-}
-
-.light-grey-letter {
-  background-color: #818384;
 }

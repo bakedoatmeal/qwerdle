@@ -14,7 +14,7 @@ const Word = ({size, guess, wordStatus = 0, keyword }) => {
         // get dict of letters with status for each letter
         const letterArray = wordArray(guess, keyword);
         return (
-        <Tile status={letterArray[index] === 0 ? 'grey' : letterArray[index] === 1 ? 'yellow' : letterArray[index] === 2 ? 'green' : ''} letter={letter} key={index} />
+        <Tile status={letterArray[index] === 0 ? 'absent' : letterArray[index]} letter={letter} key={index} />
       )
     }
   })

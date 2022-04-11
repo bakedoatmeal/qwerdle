@@ -21,15 +21,15 @@ export function updateLetters(letterStatus, guessArray, keyword) {
   for (let i = 0; i < guessArray.length; i = i + 1) {
     if (keyword.includes(guessArray[i])) {
       if (keyword.indexOf(guessArray[i]) === i) {
-        updatedDict[guessArray[i]] = 2;
+        updatedDict[guessArray[i]] = 'correct';
       } else {
-        if (updatedDict[guessArray[i]] !== 2) {
-          updatedDict[guessArray[i]] = 1;
+        if (updatedDict[guessArray[i]] !== 'correct') {
+          updatedDict[guessArray[i]] = 'present';
         }
       }
     } else {
         if (updatedDict[guessArray[i]] !== 2 && updatedDict[guessArray[i]] !== 1) {
-          updatedDict[guessArray[i]] = 0;
+          updatedDict[guessArray[i]] = 'absent';
         }
     }
   }
@@ -41,9 +41,9 @@ export function wordArray(guess, keyword) {
   for (let i = 0; i < keyword.length; i = i + 1) {
     if (keyword.includes(guess[i])) {
       if (keyword[i] === guess[i]) {
-        letterArray[i] = 2
+        letterArray[i] = 'correct'
       } else {
-        letterArray[i] = 1
+        letterArray[i] = 'present'
       }
     }
   }

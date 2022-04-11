@@ -13,17 +13,17 @@
   border: 2px solid #7c7c80;
 }
 
-.green {
+.correct {
   background-color: #538d4e;
   border: 2px solid #538d4e;
 }
 
-.yellow {
+.present {
   background-color: #b59f3a;
   border: 2px solid #b59f3a;
 }
 
-.grey {
+.absent {
   background-color: #3a3a3c;
   border: 2px solid #3a3a3c;
 }

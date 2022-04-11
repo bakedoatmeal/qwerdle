@@ -4,6 +4,8 @@ import Board from '../Board/Board';
 import Keyboard from '../Keyboard/Keyboard';
 import { useState, useEffect } from 'react';
 import { getKeyword, isValidGuess, updateLetters } from '../helpers/helpers'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Game = () => {
 
@@ -18,13 +20,12 @@ const Game = () => {
   let wordSize = 5;
   //as they type out letters for a current guess, build the guess string
   const [guesses, setGuesses] = useState(Array(6).fill(Array(5).fill('')));
-  
+  const [gameStatus, setGameStatus] = useState('in progress');
   // track the status of each letter - at the start, none have been used
   const letterDict = {};
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   for (const key of alphabet) {
-    // TODO: Change letters to descriptive strings
-    letterDict[key] = 3;
+    letterDict[key] = '';
   }
 
   const [letterStatus, setLetterStatus] = useState(letterDict);
@@ -36,6 +37,9 @@ const Game = () => {
 
   // called when a letter on keyboard is clicked
   const buttonInteraction = (letter) => {
+    if (gameStatus !== 'in progress') {
+      return
+    }
     if (letterNumber < wordSize) {
       const newArray = Array(6);
 
@@ -57,6 +61,9 @@ const Game = () => {
 
   // delete last letter guessed
   const del = () => {
+    if (gameStatus !== 'in progress') {
+      return
+    }
     if (letterNumber > 0) {
       // make a copy of the array and remove last letter guessed
       const newArray = Array(6);
@@ -87,6 +94,9 @@ const Game = () => {
 
   // runs when player presses the enter button to submit a guess
   const enter = () => {
+    if (gameStatus !== 'in progress') {
+      return
+    }
     // if correct numbers of letters guessed
     if (letterNumber === wordSize) {
       // if guess is a valid word from word bank
@@ -101,20 +111,22 @@ const Game = () => {
         
         // check win condition 
         if (wordGuessed()) {
-          alert('You won!');
+          setGameStatus('won');
         } else {
           setWordNumber(wordNumber + 1);
           setLetterNumber(0);
+
+          if (wordNumber === 5) {
+            setGameStatus('lost');
+          }
         }
       } else {
         console.log('Invalid word!', guesses[wordNumber].join(''));
         console.log(guesses[wordNumber].join(''));
-        alert('Invalid word!');
-        
+        toast.error('Invalid word!');
       }
     } else {
-      console.log('Incomplete guess!');
-      alert('Incomplete guess!');
+      toast.warn('Incomplete guess!');
     }
   }
 
@@ -136,6 +148,12 @@ const Game = () => {
 
   return (
     <div className='Game'>
+      { gameStatus === 'won' && <p className='win-message'> Congratulations 🎉 you won! Your score was {wordNumber+1}/6 </p>}
+      { gameStatus === 'lost' && <p className='lost-message'>Game Over! The word was {keyword}.</p>}
+      { gameStatus !== 'in progress' && 
+        <button onClick={() => window.location.reload(false)} className='reload-btn'>Play again</button>
+      }
+      <ToastContainer />
       <Board guesses={guesses} wordSize={wordSize} wordStatuses={wordStatuses} keyword={keyword}/>
       <Keyboard buttonInteraction={buttonInteraction} del={del} enter={enter} letterStatus={letterStatus}/>
     </div>
