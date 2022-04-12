@@ -28,7 +28,7 @@ export function updateLetters(letterStatus, guessArray, keyword) {
         }
       }
     } else {
-        if (updatedDict[guessArray[i]] !== 2 && updatedDict[guessArray[i]] !== 1) {
+        if (updatedDict[guessArray[i]] !== 'correct' && updatedDict[guessArray[i]] !== 'present') {
           updatedDict[guessArray[i]] = 'absent';
         }
     }

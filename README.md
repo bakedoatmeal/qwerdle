@@ -29,7 +29,7 @@ Start react app
 ## Roadmap/Future features
 
 - [x]  Basic 5-letter Wordle running
-- [ ]  Convert to TypeScript
+- [ ]  Add tests
 - [ ]  Add choices for word lengths (5-letter, 6-letter)
 - [ ]  Allow playing multiple boards at once
 - [ ]  Use React router to add a ‘how-to’
